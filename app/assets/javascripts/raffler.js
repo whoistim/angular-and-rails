@@ -44,7 +44,13 @@ if(!player.winner){
 }
 
   $scope.reRaffle = function (){
-
+    Player.get().then(function(players){
+      players.forEach(function(player){
+        player.winner = false;
+        player.update();
+      });
+    $scope.players = players;
+    });
   };
 
   $scope.runRaffle = function (){
